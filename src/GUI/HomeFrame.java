@@ -63,7 +63,7 @@ public class HomeFrame {
             
             
             ArrayList<Integer> ret = user.Search(Origin, Variety, ProcessMethod, PurchasedInt);
-           displayData = CoffeeData.converter(ret);
+            displayData = CoffeeData.converter(ret);
 
             listModel.clear();
 
