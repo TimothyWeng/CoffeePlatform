@@ -89,6 +89,12 @@ public class DataWriter {
         } catch (SQLException e) {
             System.out.println("Error in get 剩餘包數");
             System.out.println(e.toString());
+            try {
+                con.close();
+            } catch (SQLException sqe) {
+                System.out.println("con closing error");
+                System.out.println(sqe.toString());
+            }
             return success;
         } 
 
@@ -108,14 +114,33 @@ public class DataWriter {
                 //TODO: handle exception
                 System.out.println("Error in updating 剩餘包數");
                 System.out.println(e.toString());
+                try {
+                    con.close();
+                } catch (SQLException sqe) {
+                    System.out.println("con closing error");
+                    System.out.println(sqe.toString());
+                }
                 return success;
             } 
 
+            try {
+                con.close();
+            } catch (SQLException sqe) {
+                System.out.println("con closing error");
+                System.out.println(sqe.toString());
+            }
+
             return success;
         }
-        else 
+        else {
+            try {
+                con.close();
+            } catch (SQLException sqe) {
+                System.out.println("con closing error");
+                System.out.println(sqe.toString());
+            }
             return success;
-        
+        }
     }
 
     public static CoffeeData getCoffeeInfo(int id) {
@@ -154,6 +179,7 @@ public class DataWriter {
         catch (Exception e) {
             System.out.println("register connection error");
             System.out.println(e.getMessage());
+            return false;
         }
 
 
@@ -170,6 +196,7 @@ public class DataWriter {
                 rs.close();
                 ps.close();
                 con.close();
+                return success;
             }
             else {
                 ps.close();
@@ -195,6 +222,13 @@ public class DataWriter {
             //TODO: handle exception
             System.out.println("register-insertion error");
             System.out.println(e.toString());
+            try {
+                con.close();
+            } catch (SQLException sqe) {
+                System.out.println("con closing error");
+                System.out.println(sqe.toString());
+            }
+            return false;
         }
 
         return success;
@@ -252,6 +286,7 @@ public class DataWriter {
         catch (Exception e) {
             System.out.println("register connection error");
             System.out.println(e.getMessage());
+            return success;
         }
 
         PreparedStatement ps = null;
@@ -295,6 +330,13 @@ public class DataWriter {
             //TODO: handle exception
             System.out.println("Error in coffee insertion");
             System.out.println(e.toString());
+            try {
+                con.close();
+            } catch (SQLException sqe) {
+                System.out.println("con closing error");
+                System.out.println(sqe.toString());
+            }
+            return success;
         } 
         return success;
     }
