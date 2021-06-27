@@ -497,6 +497,7 @@ public class User {
             try {
                 rs.close();
                 ps.close();
+                con.close();
                 rs = null;
                 ps = null;
             } catch (SQLException e) {
