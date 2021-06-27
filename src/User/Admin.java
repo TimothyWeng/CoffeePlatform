@@ -1,10 +1,12 @@
+package User;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
-
+import DataManage.DataWriter;
 public class Admin extends User {
     private int[] recommandParameter = new int []{10, 8, 6};
 

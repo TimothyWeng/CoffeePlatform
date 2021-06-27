@@ -1,3 +1,4 @@
+package GUI;
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 
@@ -5,6 +6,9 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.*;
 import java.util.ArrayList;
+import User.User;
+import Coffee.CoffeeData;
+
 
 public class CoffeeFrame {
 	private JPanel contentPane;

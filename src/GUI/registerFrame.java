@@ -1,3 +1,5 @@
+package GUI;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -19,7 +21,7 @@ import java.awt.Dimension;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import DataManage.DataWriter;
 public class registerFrame extends JFrame {
     private JFrame frame = new JFrame();
 

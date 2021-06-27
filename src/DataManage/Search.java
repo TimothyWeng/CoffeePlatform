@@ -1,3 +1,5 @@
+package DataManage;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,7 +14,7 @@ public class Search {
     public static ArrayList<String> varieties = new ArrayList<String>();
     public static ArrayList<String> processes = new ArrayList<String>();
 
-    static void InitSearch() {
+    public static void InitSearch() {
         varieties.add("Geisha");
         varieties.add("SL28");
         varieties.add("Heirloom");
@@ -23,7 +25,7 @@ public class Search {
         processes.add("蜜處理");
     }
 
-    static ArrayList<Integer> SearchByAttr(String targetOrigin, String targetVariety, String targetProcess, ArrayList<Integer> List) {
+    public static ArrayList<Integer> SearchByAttr(String targetOrigin, String targetVariety, String targetProcess, ArrayList<Integer> List) {
         if (targetOrigin != null) {
             List = SearchByOrigin(targetOrigin, List);
         }
@@ -42,7 +44,7 @@ public class Search {
         return List;
     }
 
-    static ArrayList<Integer> SearchByOrigin(String targetOrigin, ArrayList<Integer> List) {
+    public static ArrayList<Integer> SearchByOrigin(String targetOrigin, ArrayList<Integer> List) {
         ArrayList<Integer> success = null;
         Connection con = null;
         try {
@@ -89,7 +91,7 @@ public class Search {
         return List;
     }
 
-    static ArrayList<Integer> SearchByVariety(String targetVariety, ArrayList<Integer> List) {
+    public static ArrayList<Integer> SearchByVariety(String targetVariety, ArrayList<Integer> List) {
         ArrayList<Integer> success = null;
         Connection con = null;
         try {
@@ -147,7 +149,7 @@ public class Search {
         return List;
     }
 
-    static ArrayList<Integer> SearchByProcess(String targetProcess, ArrayList<Integer> List) {
+    public static ArrayList<Integer> SearchByProcess(String targetProcess, ArrayList<Integer> List) {
         ArrayList<Integer> success = null;
         Connection con = null;
         try {
@@ -205,7 +207,7 @@ public class Search {
         return List;
     }
 
-    static ArrayList<Integer> GetIndex() {
+    public static ArrayList<Integer> GetIndex() {
         ArrayList<Integer> success = null;
         ArrayList<Integer> ret = new ArrayList<Integer>();
         Connection con = null;

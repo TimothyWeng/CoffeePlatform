@@ -1,6 +1,8 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
-
+import Coffee.CoffeeData;
 /**
  * Define basic UI settings of Java Panel, Java Button, Java List
  */

@@ -1,3 +1,5 @@
+package DataManage;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,7 +13,7 @@ import org.json.JSONTokener;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.security.NoSuchAlgorithmException;
-
+import Coffee.CoffeeData;
 public class DataWriter {
     public static void createDatabase() {
         Connection con = null;

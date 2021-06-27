@@ -1,3 +1,5 @@
+package User;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,7 +11,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Arrays;
-
+import DataManage.*;
 public class User {
     private String UID;
     private ArrayList<Integer> purchasedList;

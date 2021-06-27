@@ -1,5 +1,7 @@
-import java.util.ArrayList;
+package Coffee;
 
+import java.util.ArrayList;
+import DataManage.DataWriter;
 public class CoffeeData {
     private int code;
     private String name;

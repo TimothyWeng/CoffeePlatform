@@ -1,8 +1,11 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-
+import DataManage.DataWriter;
+import DataManage.Encryptor;
 public class LoginFrame {
     JLabel userLabel;
     JTextField userText;
