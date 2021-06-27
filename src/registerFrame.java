@@ -66,7 +66,7 @@ public class registerFrame extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("email:");
 		
-		btnNewButton = new JButton("New button");
+		btnNewButton = new JButton("註冊");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                 if(DataWriter.register(textField.getText(), textField_1.getText(), textField_2.getText(), 0, 0)){
