@@ -255,6 +255,7 @@ public class User {
                 }
                 rs.close();
                 ps.close();
+                con.close();
             }
         } catch (SQLException e) {
             System.out.println("Error in getPurchasedIndex");
@@ -344,4 +345,35 @@ public class User {
 		}
 		return success;
 	}
+
+    public int getPoint() {
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
+        }
+        catch (Exception e) {
+            System.out.println("buy - connection error");
+            System.out.println(e.getMessage());
+        }
+
+        int point = 0;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = null;
+        try {
+            sql = "Select 點數 from users WHERE 帳號 = ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, UID);
+            rs = ps.executeQuery();
+            point = rs.getInt(1);
+
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println(e.toString());
+        } 
+        return point;
+    }
 }
