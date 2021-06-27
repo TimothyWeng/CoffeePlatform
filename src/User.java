@@ -423,4 +423,33 @@ public class User {
         } 
         return point;
     }
+
+    public void setPoint(int p) {
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
+        }
+        catch (Exception e) {
+            System.out.println("buy - connection error");
+            System.out.println(e.getMessage());
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = null;
+        try {
+            sql = String.format("UPDATE users SET 點數 = %d WHERE 帳號 = ?", p);
+            ps = con.prepareStatement(sql);
+            ps.setString(1, UID);
+            ps.execute();
+
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println(e.toString());
+        } 
+        return;
+    }
 }
