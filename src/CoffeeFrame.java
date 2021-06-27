@@ -35,9 +35,9 @@ public class CoffeeFrame {
             for(int i = 0; i < amount; i++){
                 items.add(target.getCode());
             }
-            user.buy(items);
+            int totalcost = user.buy(items);
             rateComboBox.setEnabled(true);
-            JOptionPane.showMessageDialog(frame, String.format("coffee code: %d is purchased with amount= %d\n", target.getCode(), amount));
+            JOptionPane.showMessageDialog(frame, String.format("總共金額是 %d 元，真是太棒了!\n", totalcost));
         }
     }
     private class rateComboBoxHandler implements ActionListener{
@@ -53,7 +53,7 @@ public class CoffeeFrame {
             Integer ratingValue = Integer.parseInt((String) rateComboBox.getSelectedItem());
             System.out.printf("coffee code:%d is rated with %d\n", target.getCode(), ratingValue);
             user.rateCoffee(target.getCode(), ratingValue);
-            JOptionPane.showMessageDialog(frame, String.format("coffee code:%d is rated with %d\n", target.getCode(), ratingValue));
+            JOptionPane.showMessageDialog(frame, String.format("你評了 %d 分，真是太棒了\n", target.getCode(), ratingValue));
         }
     }
 
