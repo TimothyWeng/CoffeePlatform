@@ -230,7 +230,6 @@ public class DataWriter {
             }
             return false;
         }
-
         return success;
     }
 

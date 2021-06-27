@@ -45,11 +45,11 @@ public class CoffeeFrame {
             , target.getProductionArea(), target.getRegion(), target.getProcessMethod(), target.getProductionSeason(), target.getVariety()
             , target.getFlavor(), target.getInventory(), target.getRate(), target.getRatedPeople()));
 
-            buyComboBox.removeAllItems();
-            buyComboBox.setBounds(330, 145+30, 100, 20);
-            for(int i = 1; i <= Math.min(10, target.getInventory()); i++){    
-                buyComboBox.addItem(Integer.toString(i));
-            }
+            // buyComboBox.removeAllItems();
+            // for(int i = 1; i <= Math.min(10, target.getInventory()); i++){    
+            //     buyComboBox.addItem(Integer.toString(i));
+            // }
+            // buyComboBox.setBounds(330, 145+30, 100, 20);
         }
     }
     private class rateComboBoxHandler implements ActionListener{
