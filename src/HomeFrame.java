@@ -77,7 +77,7 @@ public class HomeFrame {
         this.user = new User(this.userID);
         this.user.InitPurchasedList();
         searchPanel = new JPanel();
-        frame.setSize(700, 600);
+        frame.setSize(1000, 600);
         frame.setLocation(500, 50);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());

@@ -120,8 +120,9 @@ public class User {
 
             PreparedStatement ps = null;
             ResultSet rs = null;
+            String sql = null;
             try {
-                String sql = "Select 售價, 剩餘包數, 品名 from coffee WHERE 編號 = ?";
+                sql = "Select 售價, 剩餘包數, 品名 from coffee WHERE 編號 = ?";
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, items.get(i));
                 rs = ps.executeQuery();
@@ -131,7 +132,7 @@ public class User {
 
                 rs.close();
                 ps.close();
-                con.close();
+                // con.close();
 
                 if (remain > 0) {
                     totalCost += price;
@@ -147,6 +148,27 @@ public class User {
                 else {
                     System.out.println(name + "沒有庫存");
                 }
+            } catch (Exception e) {
+                //TODO: handle exception
+                System.out.println(e.toString());
+            } 
+            try {
+                sql = String.format("Select 點數 from users WHERE 帳號 = ?");
+                ps = con.prepareStatement(sql);
+                ps.setString(1, UID);
+                rs = ps.executeQuery();
+                int point = rs.getInt(1);
+                //System.out.println(point);
+
+                sql = String.format("UPDATE users SET 點數 = %d WHERE 帳號 = ?", point + totalCost/10);
+                ps = con.prepareStatement(sql);
+                ps.setString(1, UID);
+                ps.execute();
+                //System.out.println(sql);
+                
+                rs.close();
+                ps.close();
+                con.close();
             } catch (Exception e) {
                 //TODO: handle exception
                 System.out.println(e.toString());
