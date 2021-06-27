@@ -35,7 +35,7 @@ public class CoffeeFrame {
             for(int i = 0; i < amount; i++){
                 items.add(target.getCode());
             }
-            int totalcost = user.buy(items);
+            int totalcost = user.buy(items, 0);
             rateComboBox.setEnabled(true);
             JOptionPane.showMessageDialog(frame, String.format("總共金額是 %d 元，真是太棒了！\n價值 %d 元的點數已經匯入您的帳戶！\n", totalcost, totalcost/10));
 
