@@ -9,6 +9,7 @@ public class LoginFrame {
     JLabel passwordLabel;
     JPasswordField passwordText;
     JButton loginButton;
+    JButton registerButton;
     JPanel panel;
     JFrame frame;
     JOptionPane success;
@@ -44,10 +45,18 @@ public class LoginFrame {
             }
         }
     }
+    
+    private class registerHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            registerFrame f = new registerFrame();
+            
+        }
+    }
     public void placeComponents(JPanel panel) {
         panel.setLayout(null);
 
-        userLabel = new JLabel("User:");
+        userLabel = new JLabel("帳號：");
         userLabel.setBounds(10,20,80,25);
         panel.add(userLabel);
 
@@ -55,7 +64,7 @@ public class LoginFrame {
         userText.setBounds(100,20,165,25);
         panel.add(userText);
 
-        passwordLabel = new JLabel("Password:");
+        passwordLabel = new JLabel("密碼：");
         passwordLabel.setBounds(10,50,80,25);
         panel.add(passwordLabel);
 
@@ -63,10 +72,15 @@ public class LoginFrame {
         passwordText.setBounds(100,50,165,25);
         panel.add(passwordText);
 
-        loginButton = new JButton("login");
-        loginButton.setBounds(110, 86, 80, 25);
+        loginButton = new JButton("登入");
+        loginButton.setBounds(110, 90, 80, 25);
         loginButton.addActionListener(new loginHandler());
         panel.add(loginButton);
+
+        registerButton = new JButton("註冊");
+        registerButton.setBounds(110, 130, 80, 25);
+        registerButton.addActionListener(new registerHandler());
+        panel.add(registerButton);
     }
     public LoginFrame(){
         frame = new JFrame("Coffee");
