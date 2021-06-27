@@ -459,7 +459,6 @@ public class DataWriter {
     }
 
     public static boolean updatePrice(int id, int newPrice) {
-        boolean success = false;
         Connection con = null;
         try {
             con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
