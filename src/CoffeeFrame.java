@@ -35,9 +35,11 @@ public class CoffeeFrame {
             for(int i = 0; i < amount; i++){
                 items.add(target.getCode());
             }
-            int totalcost = user.buy(items, 0);
+            ArrayList<Integer> totalcost = user.buy(items, 0);
             rateComboBox.setEnabled(true);
-            JOptionPane.showMessageDialog(frame, String.format("總共金額是 %d 元，真是太棒了！\n價值 %d 元的點數已經匯入您的帳戶！\n", totalcost, totalcost/10));
+            JOptionPane.showMessageDialog(frame, String.format("總共金額是 %d 元，真是太棒了！\n價值 %d 元的點數已經匯入您的帳戶！\n", totalcost.get(0), totalcost.get(0)/10));
+            if (totalcost.size() > 1 && totalcost.get(1) == 1) 
+                JOptionPane.showMessageDialog(frame, "恭喜成為會員，以後訂單都享 9 折優惠！\n");
 
             target.setInventory(target.getInventory()-amount);
             discription.setText(("品名：%s\r\n產地：%s\r\n區域：%s\r\n處理法：%s\r\n產季：%d年\r\n品種：%s\r\n風味：\r\n%s\r\n"+

@@ -105,7 +105,9 @@ public class User {
      * @param items 要購買的咖啡編號
      * @return int 價格
      */
-    public int buy(ArrayList<Integer> items, int discount) {
+    public ArrayList<Integer> buy(ArrayList<Integer> items, int discount) {
+        ArrayList<Integer> ret = new ArrayList<Integer>();
+        ret.add(0);
         int totalCost = 0;
         Connection con = null;
         PreparedStatement ps = null;
@@ -208,12 +210,14 @@ public class User {
                 ps.close();
                 con.close();
                 System.out.println("恭喜成為會員");
+                ret.add(1);
             } catch (Exception e) {
                 //TODO: handle exception
                 System.out.println(e.toString());
             } 
         }
-        return totalCost;
+        ret.set(0, totalCost);
+        return ret;
     }
 
     
