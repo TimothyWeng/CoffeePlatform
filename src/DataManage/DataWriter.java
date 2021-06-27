@@ -18,7 +18,7 @@ public class DataWriter {
     public static void createDatabase() {
         Connection con = null;
         try {
-            File dir = new File("database");
+            File dir = new File("../database");
             if (!dir.exists()) {
                 dir.mkdir();
             }
@@ -382,7 +382,7 @@ public class DataWriter {
     }
 
     public static void coffeeInit() {
-        try (FileReader reader = new FileReader("coffeeData/coffee.json")) {
+        try (FileReader reader = new FileReader("..coffeeData/coffee.json")) {
             JSONArray List = (JSONArray) (new JSONTokener(reader).nextValue());
             for (Object o1 : List) {
                 JSONObject t1 = (JSONObject) o1;
