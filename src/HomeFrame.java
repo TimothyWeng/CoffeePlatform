@@ -113,8 +113,8 @@ public class HomeFrame {
 
             comboBoxProcessMethod.setToolTipText("處理法");
             comboBoxProcessMethod.addItem("請選擇");
-            comboBoxProcessMethod.addItem("日曬");
-            comboBoxProcessMethod.addItem("水洗");
+            comboBoxProcessMethod.addItem("日曬法");
+            comboBoxProcessMethod.addItem("水洗法");
             comboBoxProcessMethod.addItem("蜜處理");
             comboBoxProcessMethod.addItem("其他");
             comboBoxProcessMethod.addItem("不限");
