@@ -227,9 +227,10 @@ public class User {
                     similarScore[j][1] = 0;
                     if (targetOrigin.equals(Origin))
                         similarScore[j][1] += admin.getParameter()[0];
+                        
+                    rs.close();
+                    ps.close();
                 }
-                rs.close();
-                ps.close();
 
                 sql = String.format("Select 處理法 from coffee where 編號 = ?");
                 ps = con.prepareStatement(sql);
@@ -244,9 +245,10 @@ public class User {
                     Process = rs.getString(1);
                     if (targetProcess.equals(Process))
                         similarScore[j][1] += admin.getParameter()[1];
+                    
+                    rs.close();
+                    ps.close();
                 }
-                rs.close();
-                ps.close();
 
                 sql = String.format("Select 品種 from coffee where 編號 = ?");
                 ps = con.prepareStatement(sql);
@@ -261,11 +263,12 @@ public class User {
                     Variety = rs.getString(1);
                     if (targetVariety.equals(Variety))
                         similarScore[j][1] += admin.getParameter()[2];
+                    
+                    rs.close();
+                    ps.close();
                 }
-                rs.close();
-                ps.close();
-                con.close();
             }
+            con.close();
         } catch (SQLException e) {
             System.out.println("Error in getPurchasedIndex");
             System.out.println(e.toString());
@@ -273,6 +276,7 @@ public class User {
         }
         ArrayList<Integer> ret = new ArrayList<Integer>();
         Sort2DArrayBasedOnColumnNumber(similarScore, 2);
+        // System.out.printf("\n%d\n", unpurchasedList.size());
         for (int i = 0; i < unpurchasedList.size(); i++) {
             ret.add(similarScore[i][0]);
         }
