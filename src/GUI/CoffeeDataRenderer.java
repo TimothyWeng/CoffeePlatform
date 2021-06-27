@@ -61,7 +61,7 @@ public class CoffeeDataRenderer extends JPanel implements ListCellRenderer<Coffe
     @Override
     public Component getListCellRendererComponent(JList<? extends CoffeeData> list, CoffeeData coffeeData, int index,
             boolean isSelected, boolean cellHasFocus) {
-        ImageIcon icon = new ImageIcon("../image/" + Integer.toString(coffeeData.getCode()) + "-2.png");
+        ImageIcon icon = new ImageIcon("src/image/" + Integer.toString(coffeeData.getCode()) + "-2.png");
         lbIcon.setIcon(icon);
         lbIcon.setVerticalAlignment(JLabel.TOP);
         lbName.setFont(new Font(Font.DIALOG, Font.BOLD, 20));

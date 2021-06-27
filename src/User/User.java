@@ -157,7 +157,6 @@ public class User {
                 System.out.println(e.toString());
             }
         }
-        totalCost -= discount;
         int member = 0;
 
         try {
@@ -218,6 +217,7 @@ public class User {
                 System.out.println(e.toString());
             } 
         }
+        totalCost -= discount;
         ret.set(0, totalCost);
         return ret;
     }

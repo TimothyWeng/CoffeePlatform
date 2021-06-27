@@ -81,7 +81,7 @@ public class HomeFrame {
         this.user = new User(this.userID);
         this.user.InitPurchasedList();
         searchPanel = new JPanel();
-        frame.setSize(1000, 600);
+        frame.setSize(800, 600);
         frame.setLocation(500, 50);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
@@ -183,7 +183,13 @@ public class HomeFrame {
         cl = (CardLayout)(cards.getLayout());
         // cl.show(cards, "content");
         // list.setVisible(false);
-        cards.setVisible(false);
+        ArrayList<Integer> ret = user.Search(null, null, null, 0);
+        displayData = CoffeeData.converter(ret);
+        listModel.clear();
+        for(CoffeeData o : displayData){
+            listModel.addElement(o);
+        }
+        cards.setVisible(true);
         frame.getContentPane().add(searchPanel, BorderLayout.NORTH);
         frame.getContentPane().add(cards, BorderLayout.CENTER);
         // frame.add(homePanel);

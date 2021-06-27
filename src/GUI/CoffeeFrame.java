@@ -112,7 +112,7 @@ public class CoffeeFrame {
 		contentPane.setLayout(null);
 		
 		
-        ImageIcon icon = new ImageIcon("../image/" + Integer.toString(target.getCode()) + "-1.png");
+        ImageIcon icon = new ImageIcon("src/image/" + Integer.toString(target.getCode()) + "-1.png");
 		lblNewLabel.setIcon(icon);
 		lblNewLabel.setBounds(10, 11, 256, 256);
 		contentPane.add(lblNewLabel);
