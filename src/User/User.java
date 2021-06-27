@@ -14,6 +14,7 @@ import java.util.Arrays;
 import DataManage.*;
 public class User {
     private String UID;
+    private boolean isAdmin;
     private ArrayList<Integer> purchasedList;
     private ArrayList<Integer> unpurchasedList;
 
@@ -453,5 +454,46 @@ public class User {
             System.out.println(e.toString());
         } 
         return;
+    }
+
+    public boolean IsAdmin(){
+        Connection con = null;
+        int check = 0;
+        try {
+            con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
+        }
+        catch (Exception e) {
+            System.out.println("getPurchasedIndex connection error");
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = String.format("Select 身分 from users WHERE 帳號 = ?");
+            ps = con.prepareStatement(sql);
+            ps.setString(1, this.UID);
+            rs = ps.executeQuery();
+            check = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println("Error in checking isAdmin");
+            System.out.println(e.toString());
+            return false;
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                rs = null;
+                ps = null;
+            } catch (SQLException e) {
+                System.out.println("checking isAdmin closing error");
+                System.out.println(e.toString());
+                return false;
+            }
+        }
+        
+        this.isAdmin = (check == 1);
+        return this.isAdmin;
     }
 }
