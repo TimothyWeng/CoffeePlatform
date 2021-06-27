@@ -77,6 +77,7 @@ public class Search {
             try {
                 rs.close();
                 ps.close();
+                con.close();
                 rs = null;
                 ps = null;
             } catch (SQLException e) {
@@ -134,6 +135,7 @@ public class Search {
             try {
                 rs.close();
                 ps.close();
+                con.close();
                 rs = null;
                 ps = null;
             } catch (SQLException e) {
@@ -191,6 +193,7 @@ public class Search {
             try {
                 rs.close();
                 ps.close();
+                con.close();
                 rs = null;
                 ps = null;
             } catch (SQLException e) {
@@ -232,6 +235,7 @@ public class Search {
             try {
                 rs.close();
                 ps.close();
+                con.close();
                 rs = null;
                 ps = null;
             } catch (SQLException e) {
