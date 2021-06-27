@@ -41,7 +41,7 @@ public class CoffeeFrame {
             }
             int point = user.getPoint();
             ArrayList<Integer> totalcost = new ArrayList<Integer>();
-            // rateComboBox.setEnabled(true);
+            rateComboBox.setEnabled(true);
             int tmp = 0;
             if (point > 0) {
                 tmp = JOptionPane.showConfirmDialog(frame, String.format("您共有價值 %d 元的點數，請問要抵用嗎？", point), "", JOptionPane.YES_NO_OPTION);
@@ -70,11 +70,13 @@ public class CoffeeFrame {
             , target.getProductionArea(), target.getRegion(), target.getProcessMethod(), target.getProductionSeason(), target.getVariety()
             , target.getFlavor(), target.getInventory(), target.getRate(), target.getRatedPeople()));
 
-            // buyComboBox.removeAllItems();
-            // for(int i = 1; i <= Math.min(10, target.getInventory()); i++){    
-            //     buyComboBox.addItem(Integer.toString(i));
-            // }
-            // buyComboBox.setBounds(330, 145+30, 100, 20);
+            //buyComboBox.removeAllItems();
+            System.out.println(target.getInventory());
+            for(int i = buyComboBox.getItemCount()-1; i > Math.min(10, target.getInventory()); i--){ 
+                System.out.println(i);   
+                buyComboBox.removeItem(Integer.toString(i));
+            }
+            buyComboBox.setBounds(330, 145+30, 100, 20);
         }
     }
     private class rateComboBoxHandler implements ActionListener{
