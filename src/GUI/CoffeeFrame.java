@@ -42,17 +42,25 @@ public class CoffeeFrame {
             int point = user.getPoint();
             ArrayList<Integer> totalcost = new ArrayList<Integer>();
             // rateComboBox.setEnabled(true);
-            int tmp = JOptionPane.showConfirmDialog(frame, String.format("您共有價值 %d 元的點數，請問要抵用嗎？", point), "", JOptionPane.YES_NO_OPTION);
-            if (tmp == JOptionPane.OK_OPTION) {
-                totalcost = user.buy(items, point);
-                if (totalcost.get(0) < 0) {
-                    user.setPoint((-1)*totalcost.get(0));
-                    totalcost.set(0, 0);
+            int tmp = 0;
+            if (point > 0) {
+                tmp = JOptionPane.showConfirmDialog(frame, String.format("您共有價值 %d 元的點數，請問要抵用嗎？", point), "", JOptionPane.YES_NO_OPTION);
+                if (tmp == JOptionPane.OK_OPTION) {
+                    totalcost = user.buy(items, point);
+                    if (totalcost.get(0) < 0) {
+                        user.setPoint((-1)*totalcost.get(0));
+                        totalcost.set(0, 0);
+                    }
                 }
+                else
+                    totalcost = user.buy(items, 0);
             }
             else
                 totalcost = user.buy(items, 0);
-            JOptionPane.showMessageDialog(frame, String.format("總共金額是 %d 元，真是太棒了！\n價值 %d 元的點數已經匯入您的帳戶！\n", totalcost.get(0), totalcost.get(0)/10));
+            if (totalcost.get(0) != 0)
+                JOptionPane.showMessageDialog(frame, String.format("總共金額是 %d 元，真是太棒了！\n價值 %d 元的點數已經匯入您的帳戶！\n", totalcost.get(0), totalcost.get(0)/10));
+            else 
+                JOptionPane.showMessageDialog(frame, String.format("總共金額是 %d 元，真是太棒了！\n", totalcost.get(0)));
             if (totalcost.size() > 1 && totalcost.get(1) == 1) 
                 JOptionPane.showMessageDialog(frame, "恭喜成為會員，以後訂單都享 9 折優惠！\n");
 

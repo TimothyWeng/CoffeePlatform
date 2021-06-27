@@ -62,7 +62,7 @@ public class AdminFrame extends JFrame {
 		this.adminUser = new Admin(AdminUID);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 300);
 		
         JMenuBar menuBar = new JMenuBar();
 		JMenu menu = new JMenu("選項");
