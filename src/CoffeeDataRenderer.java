@@ -75,7 +75,7 @@ public class CoffeeDataRenderer extends JPanel implements ListCellRenderer<Coffe
         lbOrigin.setText(coffeeData.getProductionArea());
         lbMethod.setText(coffeeData.getProcessMethod());
         lbVariety.setText(coffeeData.getVariety());
-        lbRate.setText("Rating:%f".formatted(coffeeData.getRate()));
+        lbRate.setText("Rating:%.2f".formatted(coffeeData.getRate()));
         lbRate.setVerticalAlignment(JLabel.BOTTOM);
         
         lbName.setOpaque(true);
