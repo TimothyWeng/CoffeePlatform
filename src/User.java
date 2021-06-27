@@ -105,7 +105,7 @@ public class User {
      * @param items 要購買的咖啡編號
      * @return int 價格
      */
-    public int buy(ArrayList<Integer> items) {
+    public int buy(ArrayList<Integer> items, int discount) {
         int totalCost = 0;
         Connection con = null;
         PreparedStatement ps = null;
@@ -153,6 +153,7 @@ public class User {
                 System.out.println(e.toString());
             }
         }
+        totalCost -= discount;
 
         try {
             con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
