@@ -38,6 +38,18 @@ public class CoffeeFrame {
             int totalcost = user.buy(items);
             rateComboBox.setEnabled(true);
             JOptionPane.showMessageDialog(frame, String.format("總共金額是 %d 元，真是太棒了!\n", totalcost));
+
+            target.setInventory(target.getInventory()-amount);
+            discription.setText(("品名：%s\r\n產地：%s\r\n區域：%s\r\n處理法：%s\r\n產季：%d年\r\n品種：%s\r\n風味：\r\n%s\r\n"+
+            "剩餘包數：%d\r\n評分/人數：%f/%d").formatted(target.getName()
+            , target.getProductionArea(), target.getRegion(), target.getProcessMethod(), target.getProductionSeason(), target.getVariety()
+            , target.getFlavor(), target.getInventory(), target.getRate(), target.getRatedPeople()));
+
+            buyComboBox.removeAll();
+            buyComboBox.setBounds(330, 145+30, 100, 20);
+            for(int i = 1; i <= Math.min(10, target.getInventory()); i++){    
+                buyComboBox.addItem(Integer.toString(i));
+            }
         }
     }
     private class rateComboBoxHandler implements ActionListener{
@@ -53,7 +65,15 @@ public class CoffeeFrame {
             Integer ratingValue = Integer.parseInt((String) rateComboBox.getSelectedItem());
             System.out.printf("coffee code:%d is rated with %d\n", target.getCode(), ratingValue);
             user.rateCoffee(target.getCode(), ratingValue);
-            JOptionPane.showMessageDialog(frame, String.format("你評了 %d 分，真是太棒了\n", target.getCode(), ratingValue));
+            JOptionPane.showMessageDialog(frame, String.format("你評了 %d 分，真是太棒了\n", ratingValue));
+            target.setRate((double)(target.getRate()*target.getRatedPeople()+ratingValue) / (double)(target.getRatedPeople()+1));
+            target.setRatedPeople(target.getRatedPeople()+1);
+            discription.setText(("品名：%s\r\n產地：%s\r\n區域：%s\r\n處理法：%s\r\n產季：%d年\r\n品種：%s\r\n風味：\r\n%s\r\n"+
+            "剩餘包數：%d\r\n評分/人數：%f/%d").formatted(target.getName()
+            , target.getProductionArea(), target.getRegion(), target.getProcessMethod(), target.getProductionSeason(), target.getVariety()
+            , target.getFlavor(), target.getInventory(), target.getRate(), target.getRatedPeople()));
+
+            rateButton.setEnabled(false);
         }
     }
 
