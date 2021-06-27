@@ -26,6 +26,12 @@ public class User {
         unpurchasedList = new ArrayList<Integer>();
     }
 
+    public boolean Purchased(int code){
+        boolean ret = purchasedList.contains(code);
+        System.out.println(ret? "Purchased":"notPurchased");
+        return ret;
+    }
+
     public void InitPurchasedList() {
         purchasedList = new ArrayList<Integer>();
 
