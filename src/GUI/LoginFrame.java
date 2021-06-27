@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import DataManage.DataWriter;
 import DataManage.Encryptor;
+import User.User;
 public class LoginFrame {
     JLabel userLabel;
     JTextField userText;
@@ -38,9 +39,18 @@ public class LoginFrame {
             	System.out.println("yes");
             	JOptionPane.showMessageDialog(frame, "login success");
             	frame.setVisible(false);
-                // change to home frame
-            	// HomeFrame hf;
-                new HomeFrame(user);
+
+                User checkAdmin = new User(user);
+                if(checkAdmin.IsAdmin()){
+                    System.out.println("Admin");
+                    new AdminFrame(user);
+                }
+                else{
+                    System.out.println("not Admin");
+                    // change to home frame
+                    // HomeFrame hf;
+                    new HomeFrame(user);
+                }
             }
             else {
             	System.out.println("login fail!");
