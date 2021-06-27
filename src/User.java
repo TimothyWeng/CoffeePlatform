@@ -107,9 +107,12 @@ public class User {
      */
     public int buy(ArrayList<Integer> items) {
         int totalCost = 0;
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = null;
 
         for (int i = 0; i < items.size(); i++) {
-            Connection con = null;
             try {
                 con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
             }
@@ -118,9 +121,6 @@ public class User {
                 System.out.println(e.getMessage());
             }
 
-            PreparedStatement ps = null;
-            ResultSet rs = null;
-            String sql = null;
             try {
                 sql = "Select 售價, 剩餘包數, 品名 from coffee WHERE 編號 = ?";
                 ps = con.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class User {
 
                 rs.close();
                 ps.close();
-                // con.close();
+                con.close();
 
                 if (remain > 0) {
                     totalCost += price;
@@ -151,29 +151,38 @@ public class User {
             } catch (Exception e) {
                 //TODO: handle exception
                 System.out.println(e.toString());
-            } 
-            try {
-                sql = String.format("Select 點數 from users WHERE 帳號 = ?");
-                ps = con.prepareStatement(sql);
-                ps.setString(1, UID);
-                rs = ps.executeQuery();
-                int point = rs.getInt(1);
-                //System.out.println(point);
-
-                sql = String.format("UPDATE users SET 點數 = %d WHERE 帳號 = ?", point + totalCost/10);
-                ps = con.prepareStatement(sql);
-                ps.setString(1, UID);
-                ps.execute();
-                //System.out.println(sql);
-                
-                rs.close();
-                ps.close();
-                con.close();
-            } catch (Exception e) {
-                //TODO: handle exception
-                System.out.println(e.toString());
-            } 
+            }
         }
+
+        try {
+            con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
+        }
+        catch (Exception e) {
+            System.out.println("buy - connection error");
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            sql = String.format("Select 點數 from users WHERE 帳號 = ?");
+            ps = con.prepareStatement(sql);
+            ps.setString(1, UID);
+            rs = ps.executeQuery();
+            int point = rs.getInt(1);
+            //System.out.println(point);
+
+            sql = String.format("UPDATE users SET 點數 = %d WHERE 帳號 = ?", point + totalCost/10);
+            ps = con.prepareStatement(sql);
+            ps.setString(1, UID);
+            ps.execute();
+            //System.out.println(sql);
+            
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println(e.toString());
+        } 
         return totalCost;
     }
 
