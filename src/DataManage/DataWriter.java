@@ -408,6 +408,32 @@ public class DataWriter {
         }
     }
 
+    public static void coffeeInit(String filePath) {
+        try (FileReader reader = new FileReader(filePath)) {
+            JSONArray List = (JSONArray) (new JSONTokener(reader).nextValue());
+            for (Object o1 : List) {
+                JSONObject t1 = (JSONObject) o1;
+                int id = Integer.parseInt(t1.getString("編號"));
+                String name = t1.getString("品名");
+                String continent = t1.getString("產地");
+                String region = t1.getString("區域");
+                String process = t1.getString("處理法");
+                int year = Integer.parseInt(t1.getString("產季"));
+                String species = t1.getString("品種");
+                String flavor = t1.getString("風味敘述");
+                int price = Integer.parseInt(t1.getString("售價"));
+                int remain = Integer.parseInt(t1.getString("剩餘包數"));
+
+                coffeeInsert(id, name, continent, region, process, year, species, flavor, price, remain);
+
+
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println("coffeeInit fault");
+            System.out.println(e.toString());
+        }
+    }
     public static boolean updateInventory(int id, int num) {
         boolean success = false;
         Connection con = null;
