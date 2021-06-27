@@ -25,7 +25,7 @@ public class HomeFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             ArrayList<Integer> ret = user.getRecommand();
-            ArrayList<CoffeeData> displayData = CoffeeData.converter(ret);
+            displayData = CoffeeData.converter(ret);
             listModel.clear();
 
             for(CoffeeData o : displayData){
@@ -59,7 +59,7 @@ public class HomeFrame {
             
             
             ArrayList<Integer> ret = user.Search(Origin, Variety, ProcessMethod, PurchasedInt);
-            ArrayList<CoffeeData> displayData = CoffeeData.converter(ret);
+           displayData = CoffeeData.converter(ret);
 
             listModel.clear();
 
@@ -155,19 +155,19 @@ public class HomeFrame {
                     System.out.println("yes");
                     int index = theList.locationToIndex(mouseEvent.getPoint());
                     if (index >= 0) {
-                    //     int o = theList.getModel().getElementAt(index).getCode();
-                    //     System.out.println(o);
-                    //     CoffeeData target = new CoffeeData();
-                    //     System.out.println(displayData.get(0).getCode());
-                    //     for(int i=0; i<displayData.size(); i++){
-                    //         if(displayData.get(i).getCode() == o){
-                    //             target = displayData.get(i);
-                    //             break;
-                    //         }
-                    //     }
-                    //     // CoffeeData info = new CoffeeData(target); // TODO: copy constructor
+                        int o = theList.getModel().getElementAt(index).getCode();
+                        System.out.println(o);
+                        CoffeeData target = new CoffeeData();
+                        System.out.println(displayData.get(0).getCode());
+                        for(int i=0; i<displayData.size(); i++){
+                            if(displayData.get(i).getCode() == o){
+                                target = displayData.get(i);
+                                break;
+                            }
+                        }
+                        // CoffeeData info = new CoffeeData(target); // TODO: copy constructor
 
-                    //     CoffeeFrame cf = new CoffeeFrame(target, user.Purchased(target.getCode()), user);
+                        CoffeeFrame cf = new CoffeeFrame(target, user.Purchased(target.getCode()), user);
                     } 
                 }
             }
