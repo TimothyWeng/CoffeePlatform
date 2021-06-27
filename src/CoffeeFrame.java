@@ -90,7 +90,7 @@ public class CoffeeFrame {
 		frame.setBounds(new Rectangle(0, 0, 600, 600));
 		frame.setSize(new Dimension(600, 700));
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setBounds(100, 100, 500, 320);
+		frame.setBounds(100, 100, 520, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -140,7 +140,7 @@ public class CoffeeFrame {
         , target.getFlavor(), target.getInventory(), target.getRate(), target.getRatedPeople()));
 		discription.setOpaque(false);
 		discription.setEditable(false);
-		discription.setBounds(280, 10, 200, 170);
+		discription.setBounds(280, 10, 220, 170);
 		contentPane.add(discription);
         frame.setVisible(true);
     }
