@@ -85,6 +85,7 @@ public class DataWriter {
 
             rs.close();
             ps.close();
+            con.close();
             
         } catch (SQLException e) {
             System.out.println("Error in get 剩餘包數");
@@ -100,6 +101,15 @@ public class DataWriter {
 
         if (storage > 0) {
             storage--;
+            try {
+                con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
+            }
+            catch (Exception e) {
+                System.out.println("reduceStorage connection error");
+                System.out.println(e.getMessage());
+                return success;
+            }
+
             try {
                 String sql = "Update coffee set 剩餘包數 = ? WHERE 編號 = ?";
                 ps = con.prepareStatement(sql);
@@ -122,14 +132,6 @@ public class DataWriter {
                 }
                 return success;
             } 
-
-            try {
-                con.close();
-            } catch (SQLException sqe) {
-                System.out.println("con closing error");
-                System.out.println(sqe.toString());
-            }
-
             return success;
         }
         else {
