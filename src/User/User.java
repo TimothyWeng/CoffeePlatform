@@ -30,6 +30,11 @@ public class User {
         Search.InitSearch();
     }
 
+    
+    /** 
+     * @param code 檢查該編號是否已買
+     * @return boolean
+     */
     public boolean Purchased(int code){
         boolean ret = purchasedList.contains(code);
         System.out.println(ret? "Purchased":"notPurchased");
@@ -395,6 +400,10 @@ public class User {
 		return success;
 	}
 
+    
+    /** 
+     * @return get point
+     */
     public int getPoint() {
         Connection con = null;
         try {
@@ -426,6 +435,10 @@ public class User {
         return point;
     }
 
+    
+    /** 
+     * @param set point
+     */
     public void setPoint(int p) {
         Connection con = null;
         try {
