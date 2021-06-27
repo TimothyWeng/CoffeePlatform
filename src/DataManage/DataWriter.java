@@ -435,7 +435,6 @@ public class DataWriter {
         }
     }
     public static boolean updateInventory(int id, int num) {
-        boolean success = false;
         Connection con = null;
         try {
             con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
@@ -444,8 +443,7 @@ public class DataWriter {
             ps = con.prepareStatement(sql);
             ps.setInt(1, num);
             ps.setInt(2, id);
-
-            success = ps.execute();
+            ps.execute();
 
             ps.close();
             con.close();
@@ -454,8 +452,7 @@ public class DataWriter {
             System.out.println("updateInventory error");
             System.out.println(e.getMessage());
         }
-        System.out.println(success);
-        return success;
+        return true;
     }
 
     public static boolean updatePrice(int id, int newPrice) {
