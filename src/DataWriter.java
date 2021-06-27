@@ -129,9 +129,13 @@ public class DataWriter {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
+            CoffeeData ret = new CoffeeData(id, rs.getString(2), rs.getInt(6), rs.getString(7), rs.getString(3), rs.getString(4), rs.getString(5),
+            rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getDouble(11), rs.getInt(12));
 
-            return new CoffeeData(id, rs.getString(2), rs.getInt(6), rs.getString(7), rs.getString(3), rs.getString(4), rs.getString(5),
-             rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getDouble(11), rs.getInt(12));
+            rs.close();
+            ps.close();
+            con.close();
+            return ret;
 
         }
         catch (SQLException e) {
