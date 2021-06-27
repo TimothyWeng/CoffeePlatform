@@ -447,7 +447,6 @@ public class DataWriter {
     public static void main(String[] args) {
         createDatabase();
         coffeeInit();
-
         register("jjk846505", "123456", "frankyang6668@gmail.com", 0, 1);
         register("barista", "777777", 0, 0);
         register("ilovekinu", "666666", "aaa@gmail.com", 0, 0);
@@ -456,15 +455,15 @@ public class DataWriter {
         // coffeeInsert(1011, "Geisha, Finca Takesi", "美洲", "Yanacachi, Bolivia", "水洗法", 2020, "Geisha", "茉莉、佛手柑、荔枝、蜂蜜、複雜", 700, 20);
         // reduceStorage(1010);
         //System.out.println(loginChecker("ilovekinu", "666666"));
-        User testUser = new User("barista");
+        // User testUser = new User("barista");
         // System.out.println(testUser.UID);
         // testUser.UID = new String("barista");
         // System.out.println(testUser.UID);
-        testUser.InitPurchasedList();
-        ArrayList<Integer> items = new ArrayList<Integer>();
+        // testUser.InitPurchasedList();
+        // ArrayList<Integer> items = new ArrayList<Integer>();
         // items.add(1001);
         // testUser.buy(items);
-        items = testUser.Search(null, "其他", null, 0);
+        // items = testUser.Search(null, "其他", null, 0);
         /*
         for (Integer i : items)
             System.out.println(i);
