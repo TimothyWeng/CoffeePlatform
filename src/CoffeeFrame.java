@@ -45,7 +45,7 @@ public class CoffeeFrame {
             , target.getProductionArea(), target.getRegion(), target.getProcessMethod(), target.getProductionSeason(), target.getVariety()
             , target.getFlavor(), target.getInventory(), target.getRate(), target.getRatedPeople()));
 
-            buyComboBox.removeAll();
+            buyComboBox.removeAllItems();
             buyComboBox.setBounds(330, 145+30, 100, 20);
             for(int i = 1; i <= Math.min(10, target.getInventory()); i++){    
                 buyComboBox.addItem(Integer.toString(i));
