@@ -255,6 +255,7 @@ public class User {
                 }
                 rs.close();
                 ps.close();
+                con.close();
             }
         } catch (SQLException e) {
             System.out.println("Error in getPurchasedIndex");
