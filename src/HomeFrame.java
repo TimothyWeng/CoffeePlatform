@@ -16,6 +16,7 @@ public class HomeFrame {
     JComboBox<String> comboBoxProcessMethod = new JComboBox<>();
     JComboBox<String> comboBoxPurchased = new JComboBox<>();
     DefaultListModel<CoffeeData> listModel = new DefaultListModel<>();
+    ArrayList<CoffeeData> displayData = null;
     JList<CoffeeData> list;
     String userID;
     User user;
@@ -25,6 +26,13 @@ public class HomeFrame {
         public void actionPerformed(ActionEvent e) {
             ArrayList<Integer> ret = user.getRecommand();
             ArrayList<CoffeeData> displayData = CoffeeData.converter(ret);
+            listModel.clear();
+
+            for(CoffeeData o : displayData){
+                listModel.addElement(o);
+            }
+            cards.setVisible(true);
+            cl.show(cards, "content");
         }
     }
 
@@ -47,21 +55,11 @@ public class HomeFrame {
             if(Variety.equals("請選擇") || Variety.equals("不限")) Variety = null;
             if(ProcessMethod.equals("請選擇") || ProcessMethod.equals("不限")) ProcessMethod = null;
 
-            user.InitPurchasedList();
             System.out.printf("%s, %s, %s, %d\n", Origin, Variety, ProcessMethod, PurchasedInt);
             
             
             ArrayList<Integer> ret = user.Search(Origin, Variety, ProcessMethod, PurchasedInt);
-            // ArrayList<Integer> ret = new ArrayList<>();
-            // ret = Search.SearchByAttr(Origin, Variety, ProcessMethod, ret);
-            // ArrayList<CoffeeData> displayData = new ArrayList<>();
             ArrayList<CoffeeData> displayData = CoffeeData.converter(ret);
-            // displayData.add(new CoffeeData(1, "name", 12, "variety", "productionArea", "region", "processMethod"
-            // , "flavor", 1000, 5, 3.8, 20));
-            // displayData.add(new CoffeeData(2, "name2", 12, "variety2", "productionArea2", "region2", "processMethod2"
-            // , "flavor2", 1000, 5, 3.8, 20));
-            // displayData.add(new CoffeeData(3, "name3", 12, "variety3", "productionArea3", "region3", "processMethod3"
-            // , "flavor3", 1000, 5, 3.8, 20));
 
             listModel.clear();
 
@@ -70,41 +68,14 @@ public class HomeFrame {
             }
             cards.setVisible(true);
             cl.show(cards, "content");
-
-
-            
-            MouseListener mouseListener = new MouseAdapter() {
-                public void mouseClicked(MouseEvent mouseEvent) {
-                    JList<CoffeeData> theList = (JList) mouseEvent.getSource();
-                    if (mouseEvent.getClickCount() == 2) {
-                        int index = theList.locationToIndex(mouseEvent.getPoint());
-                        if (index >= 0) {
-                            int o = theList.getModel().getElementAt(index).getCode();
-                            System.out.println(o);
-                            CoffeeData target = new CoffeeData();
-                            System.out.println(displayData.get(0).getCode());
-                            for(int i=0; i<displayData.size(); i++){
-                                if(displayData.get(i).getCode() == o){
-                                    target = displayData.get(i);
-                                    break;
-                                }
-                            }
-                            // CoffeeData info = new CoffeeData(target); // TODO: copy constructor
-
-                            CoffeeFrame cf = new CoffeeFrame(target, user.Purchased(target.getCode()), user);
-                        } 
-                    }
-                }
-            };
-            list.addMouseListener(mouseListener);
         }
-
     }
 
     public HomeFrame(){}
-    public HomeFrame(String user) {
-        this.userID = new String(user);
+    public HomeFrame(String userID) {
+        this.userID = new String(userID);
         this.user = new User(this.userID);
+        this.user.InitPurchasedList();
         searchPanel = new JPanel();
         frame.setSize(700, 600);
         frame.setLocation(500, 50);
@@ -177,6 +148,31 @@ public class HomeFrame {
         list = new JList<>(listModel);
         // frame.add(new JScrollPane(list));
         list.setCellRenderer(new CoffeeDataRenderer());
+        MouseListener mouseListener = new MouseAdapter() {
+            public void mouseClicked(MouseEvent mouseEvent) {
+                JList<CoffeeData> theList = (JList) mouseEvent.getSource();
+                if (mouseEvent.getClickCount() == 2) {
+                    System.out.println("yes");
+                    int index = theList.locationToIndex(mouseEvent.getPoint());
+                    if (index >= 0) {
+                    //     int o = theList.getModel().getElementAt(index).getCode();
+                    //     System.out.println(o);
+                    //     CoffeeData target = new CoffeeData();
+                    //     System.out.println(displayData.get(0).getCode());
+                    //     for(int i=0; i<displayData.size(); i++){
+                    //         if(displayData.get(i).getCode() == o){
+                    //             target = displayData.get(i);
+                    //             break;
+                    //         }
+                    //     }
+                    //     // CoffeeData info = new CoffeeData(target); // TODO: copy constructor
+
+                    //     CoffeeFrame cf = new CoffeeFrame(target, user.Purchased(target.getCode()), user);
+                    } 
+                }
+            }
+        };
+        list.addMouseListener(mouseListener);
         
         contentPane.add(new JScrollPane(list), BorderLayout.CENTER);
         cards.add(contentPane, "content");
@@ -190,6 +186,4 @@ public class HomeFrame {
         // frame.pack();
         frame.setVisible(true);
     }
-
-
 }
