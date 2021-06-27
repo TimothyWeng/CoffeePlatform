@@ -111,9 +111,12 @@ public class Search {
                 rs = ps.executeQuery();
                 Variety = rs.getString(1);
                 if (targetVariety.equals("其他")) {
-                    if (varieties.contains(Variety)) {
-                        List.remove(i);
-                        i--;
+                    for (int j = 0; j < varieties.size(); j++) {
+                        if (varieties.get(j).equals(Variety)) {
+                            List.remove(i);
+                            i--;
+                            break;
+                        }
                     }
                 }
                 else {
@@ -165,9 +168,12 @@ public class Search {
                 rs = ps.executeQuery();
                 Process = rs.getString(1);
                 if (targetProcess.equals("其他")) {
-                    if (processes.contains(Process)) {
-                        List.remove(i);
-                        i--;
+                    for (int j = 0; j < processes.size(); j++) {
+                        if (processes.get(j).equals(Process)) {
+                            List.remove(i);
+                            i--;
+                            break;
+                        }
                     }
                 }
                 else {

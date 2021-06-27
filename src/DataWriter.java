@@ -415,11 +415,13 @@ public class DataWriter {
         // System.out.println(testUser.UID);
         testUser.InitPurchasedList();
         ArrayList<Integer> items = new ArrayList<Integer>();
-        items.add(1001);
-        testUser.buy(items);
-        items = testUser.getRecommand();
+        // items.add(1001);
+        // testUser.buy(items);
+        items = testUser.Search(null, "其他", null, 0);
+        /*
         for (Integer i : items)
             System.out.println(i);
+        */
         
         // for (Integer i : testUser.purchasedList)
         //     System.out.println(i);

@@ -18,12 +18,14 @@ public class User {
     public User() {
         purchasedList = new ArrayList<Integer>();
         unpurchasedList = new ArrayList<Integer>();
+        Search.InitSearch();
     }
 
     public User(String UID) {
         this.UID = new String(UID);
         purchasedList = new ArrayList<Integer>();
         unpurchasedList = new ArrayList<Integer>();
+        Search.InitSearch();
     }
 
     public boolean Purchased(int code){
