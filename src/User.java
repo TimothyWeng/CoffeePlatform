@@ -154,6 +154,7 @@ public class User {
             }
         }
         totalCost -= discount;
+        int member = 0;
 
         try {
             con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
@@ -164,11 +165,14 @@ public class User {
         }
 
         try {
-            sql = String.format("Select 點數 from users WHERE 帳號 = ?");
+            sql = String.format("Select 點數, 會員 from users WHERE 帳號 = ?");
             ps = con.prepareStatement(sql);
             ps.setString(1, UID);
             rs = ps.executeQuery();
             int point = rs.getInt(1);
+            member = rs.getInt(2);
+            if (member == 1)
+                totalCost *= 0.9;
             //System.out.println(point);
 
             sql = String.format("UPDATE users SET 點數 = %d WHERE 帳號 = ?", point + totalCost/10);
@@ -184,6 +188,31 @@ public class User {
             //TODO: handle exception
             System.out.println(e.toString());
         } 
+        if (member == 0 && totalCost >= 1000) {
+            try {
+                con = DriverManager.getConnection("jdbc:sqlite:database/UsersAndCoffee.db");
+            }
+            catch (Exception e) {
+                System.out.println("buy - connection error");
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                sql = "UPDATE users SET 會員 = 1 WHERE 帳號 = ?";
+                ps = con.prepareStatement(sql);
+                ps.setString(1, UID);
+                ps.execute();
+                //System.out.println(sql);
+                
+                rs.close();
+                ps.close();
+                con.close();
+                System.out.println("恭喜成為會員");
+            } catch (Exception e) {
+                //TODO: handle exception
+                System.out.println(e.toString());
+            } 
+        }
         return totalCost;
     }
 
