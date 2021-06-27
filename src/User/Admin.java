@@ -96,8 +96,8 @@ public class Admin extends User {
         return ret;
     }
 
-    public static void main(String[] args) {
-        Admin u = new Admin("jjk846505");
-        u.addCoffee("123", "46", "46", "46", 2021, "46", "46", 300, 10);
-    }
+    // public static void main(String[] args) {
+    //     Admin u = new Admin("jjk846505");
+    //     u.addCoffee("123", "46", "46", "46", 2021, "46", "46", 300, 10);
+    // }
 }

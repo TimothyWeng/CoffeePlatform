@@ -476,12 +476,12 @@ public class DataWriter {
         return true;
     }
     
-    public static void main(String[] args) {
-        createDatabase();
-        register("admin", "admin", "b08902038@ntu.edu.tw", 0, 1);
-        register("OOP", "OOP", 0, 0);
-        register("is", "is", 0, 0);
-        register("fun", "fu ", 0, 0);
+    // public static void main(String[] args) {
+    //     createDatabase();
+    //     register("admin", "admin", "b08902038@ntu.edu.tw", 0, 1);
+    //     register("OOP", "OOP", 0, 0);
+    //     register("is", "is", 0, 0);
+    //     register("fun", "fu ", 0, 0);
         // coffeeInsert(1009, "Geisha, Finca Takesi", "美洲", "Yanacachi, Bolivia", "水洗法", 2020, "Geisha", "茉莉、佛手柑、荔枝、蜂蜜、複雜", 700, 20);
         // coffeeInsert(1010, "Geisha, Finca Takesi", "非洲", "Yanacachi, Bolivia", "水洗法", 2020, "Geisha", "茉莉、佛手柑、荔枝、蜂蜜、複雜", 700, 20);
         // coffeeInsert(1011, "Geisha, Finca Takesi", "美洲", "Yanacachi, Bolivia", "水洗法", 2020, "Geisha", "茉莉、佛手柑、荔枝、蜂蜜、複雜", 700, 20);
@@ -527,5 +527,5 @@ public class DataWriter {
         // System.out.println("=====");
         // for (Integer i : testUser.Search("非洲", null, "水洗法", 0))
         //     System.out.println(i);
-    }
+    // }
 }
