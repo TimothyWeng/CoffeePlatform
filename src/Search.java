@@ -9,6 +9,20 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class Search {
+    public static ArrayList<String> varieties = new ArrayList<String>();
+    public static ArrayList<String> processes = new ArrayList<String>();
+
+    static void InitSearch() {
+        varieties.add("Geisha");
+        varieties.add("SL28");
+        varieties.add("Heirloom");
+        varieties.add("Typica");
+        varieties.add("Bourbon");
+        processes.add("日曬法");
+        processes.add("水洗法");
+        processes.add("蜜處理");
+    }
+
     static ArrayList<Integer> SearchByAttr(String targetOrigin, String targetVariety, String targetProcess, ArrayList<Integer> List) {
         if (targetOrigin != null) {
             List = SearchByOrigin(targetOrigin, List);
@@ -96,9 +110,17 @@ public class Search {
                 ps.setInt(1, List.get(i));
                 rs = ps.executeQuery();
                 Variety = rs.getString(1);
-                if (!targetVariety.equals(Variety)) {
-                    List.remove(i);
-                    i--;
+                if (targetVariety.equals("其他")) {
+                    if (varieties.contains(Variety)) {
+                        List.remove(i);
+                        i--;
+                    }
+                }
+                else {
+                    if (!targetVariety.equals(Variety)) {
+                        List.remove(i);
+                        i--;
+                    }
                 }
             }
         } catch (SQLException e) {
@@ -142,9 +164,17 @@ public class Search {
                 ps.setInt(1, List.get(i));
                 rs = ps.executeQuery();
                 Process = rs.getString(1);
-                if (!targetProcess.equals(Process)) {
-                    List.remove(i);
-                    i--;
+                if (targetProcess.equals("其他")) {
+                    if (processes.contains(Process)) {
+                        List.remove(i);
+                        i--;
+                    }
+                }
+                else {
+                    if (!targetProcess.equals(Process)) {
+                        List.remove(i);
+                        i--;
+                    }
                 }
             }
         } catch (SQLException e) {
