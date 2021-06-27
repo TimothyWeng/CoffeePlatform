@@ -454,7 +454,7 @@ public class DataWriter {
             System.out.println("updateInventory error");
             System.out.println(e.getMessage());
         }
-
+        System.out.println(success);
         return success;
     }
 
@@ -469,8 +469,7 @@ public class DataWriter {
             ps.setInt(1, newPrice);
             ps.setInt(2, id);
 
-            success = ps.execute();
-
+            ps.execute();
             ps.close();
             con.close();
         }
@@ -478,8 +477,7 @@ public class DataWriter {
             System.out.println("updateInventory error");
             System.out.println(e.getMessage());
         }
-
-        return success;
+        return true;
     }
     
     public static void main(String[] args) {
