@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONTokener;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.security.NoSuchAlgorithmException;
 
 public class DataWriter {
     public static void createDatabase() {
@@ -27,7 +28,7 @@ public class DataWriter {
                             + "帳號 text not null, "
                             + "密碼 text not null, "
                             + "email text, "
-                            + "訂閱 integer not null, "
+                            + "會員 integer not null, "
                             + "身分 integer not null, "
                             + "點數 integer not null)");
             
@@ -202,10 +203,19 @@ public class DataWriter {
             }
             else {
                 ps.close();
-                sql = "Insert into users(帳號, 密碼, email, 訂閱, 點數, 身分) Values(?,?,?,?,?,?)";
+                sql = "Insert into users(帳號, 密碼, email, 會員, 點數, 身分) Values(?,?,?,?,?,?)";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, UID);
-                ps.setString(2, password);
+
+                String hashedpassword = new String();
+                try {
+                    hashedpassword = Encryptor.encryption(password);
+                    // System.out.println(hashedPassword);
+                } catch (NoSuchAlgorithmException e1) {
+                    e1.printStackTrace();
+                }
+
+                ps.setString(2, hashedpassword);
                 ps.setString(3, email);
                 ps.setInt(4, subscribed);
                 ps.setInt(5, 0);

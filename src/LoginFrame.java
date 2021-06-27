@@ -12,7 +12,6 @@ public class LoginFrame {
     JPanel panel;
     JFrame frame;
     JOptionPane success;
-    PasswordChecker passwordChecker = new PasswordChecker();
 
     private class loginHandler implements ActionListener{
         @Override

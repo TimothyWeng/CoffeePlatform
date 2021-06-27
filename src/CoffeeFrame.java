@@ -69,7 +69,7 @@ public class CoffeeFrame {
             target.setRate((double)(target.getRate()*target.getRatedPeople()+ratingValue) / (double)(target.getRatedPeople()+1));
             target.setRatedPeople(target.getRatedPeople()+1);
             discription.setText(("品名：%s\r\n產地：%s\r\n區域：%s\r\n處理法：%s\r\n產季：%d年\r\n品種：%s\r\n風味：\r\n%s\r\n"+
-            "剩餘包數：%d\r\n評分/人數：%f/%d").formatted(target.getName()
+            "剩餘包數：%d\r\n評分/人數：%.2f/%d").formatted(target.getName()
             , target.getProductionArea(), target.getRegion(), target.getProcessMethod(), target.getProductionSeason(), target.getVariety()
             , target.getFlavor(), target.getInventory(), target.getRate(), target.getRatedPeople()));
 
@@ -133,7 +133,7 @@ public class CoffeeFrame {
         contentPane.add(rateButton);
 		
 		discription.setText(("品名：%s\r\n產地：%s\r\n區域：%s\r\n處理法：%s\r\n產季：%d年\r\n品種：%s\r\n風味：\r\n%s\r\n"+
-        "剩餘包數：%d\r\n評分/人數：%f/%d").formatted(target.getName()
+        "剩餘包數：%d\r\n評分/人數：%.2f/%d").formatted(target.getName()
         , target.getProductionArea(), target.getRegion(), target.getProcessMethod(), target.getProductionSeason(), target.getVariety()
         , target.getFlavor(), target.getInventory(), target.getRate(), target.getRatedPeople()));
 		discription.setOpaque(false);
