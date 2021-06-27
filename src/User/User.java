@@ -72,8 +72,7 @@ public class User {
             try {
                 rs.close();
                 ps.close();
-                rs = null;
-                ps = null;
+                con.close();
             } catch (SQLException e) {
                 System.out.println("getPurchasedIndex-closing error");
                 System.out.println(e.toString());
@@ -498,8 +497,6 @@ public class User {
                 rs.close();
                 ps.close();
                 con.close();
-                rs = null;
-                ps = null;
             } catch (SQLException e) {
                 System.out.println("checking isAdmin closing error");
                 System.out.println(e.toString());
